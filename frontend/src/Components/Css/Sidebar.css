@@ -1,0 +1,33 @@
+.sidebar {
+    width: 250px;
+    padding: 20px;
+  }
+  
+  .sidebar img {
+    width: 80px;
+    height: auto;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 45px;
+  }
+  
+  .sidebar nav ul li a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
