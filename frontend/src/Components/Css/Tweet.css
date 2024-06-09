@@ -4,43 +4,150 @@
     flex-direction: column;
     align-items: center;
     width: 65%;
-    margin-top: 20px;
     border: 1px solid #747474;
 
 }
 .tweet-container {
-    width: 90%;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .tweet-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .tweet-header img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .tweet-content {
-    margin-bottom: 20px;
-  }
-  
-  .tweet-footer {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .tweet-footer button {
-    padding: 5px 10px;
-    background-color: #1da1f2;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  width: 80%;
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1e8ed;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.tweet-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tweet-body {
+  padding: 10px 0;
+}
+
+.new-tweet, .new-comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.new-tweet textarea, .new-comment textarea {
+  width: 100%;
+  border: 1px solid #e1e8ed;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+  height: 80px;
+}
+
+.new-tweet button, .new-comment button {
+  align-self: flex-end;
+  background-color: #1da1f2;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.new-tweet button:hover, .new-comment button:hover {
+  background-color: #0d95e8;
+}
+
+.tweet {
+  border-top: 1px solid #e1e8ed;
+  padding-top: 10px;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+}
+
+.tweet-header img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.tweet-header h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.tweet-content {
+  padding: 10px 0;
+}
+
+.tweet-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.tweet-footer button {
+  background: none;
+  border: none;
+  color: #1da1f2;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.tweet-footer button:hover {
+  background-color: #e8f5fd;
+}
+
+.comments {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #e1e8ed;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-header h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.comment-header button {
+  background: none;
+  border: none;
+  color: #e0245e;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.comment-header button:hover {
+  text-decoration: underline;
+}
+
+.comment-content {
+  padding-left: 10px;
+}

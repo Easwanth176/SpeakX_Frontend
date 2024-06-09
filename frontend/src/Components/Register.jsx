@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link} from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import './Css/Login.css';
-import logo from './assets/twitter-logo.png';
+import logo from './assets/logo.png';
 
 const REGISTER_USER = gql`
   mutation Register($username: String!, $email: String!, $password: String!) {

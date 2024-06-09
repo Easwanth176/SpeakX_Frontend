@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import './Css/Login.css';
-import logo from './assets/twitter-logo.png';
+import logo from './assets/logo.png';
 
 const LOGIN_USER = gql`
   mutation Login($email: String!, $password: String!) {
@@ -25,13 +25,15 @@ const Login = () => {
 
   const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
     onCompleted: data => {
-      console.log(data); 
+      const token = data.login.token;
+      localStorage.setItem('token', token);
       window.location.href = '/home';
     },
     onError: error => {
       console.error('Error logging in:', error.message);
     }
   });
+  
 
   const handleChange = e => {
     setFormData({

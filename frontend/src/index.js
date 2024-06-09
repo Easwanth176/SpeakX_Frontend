@@ -1,31 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-
 import client from './apolloClient';
 import './index.css';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import Sidebar from './Components/Sidebar';
 
+const root = createRoot(document.getElementById('root'));
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Register />} />
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/home' element={<Home/>} />
-          <Route path='/Sidebar' element={<Sidebar/>} />
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home/*" element={<Home />} />
         </Routes>
       </BrowserRouter>
-     </ApolloProvider>
-
+    </ApolloProvider>
   </React.StrictMode>
 );
-
