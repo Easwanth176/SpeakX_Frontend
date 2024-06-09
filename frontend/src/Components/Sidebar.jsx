@@ -31,8 +31,8 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to={{ pathname: '/home/bookmarks', state: { selected: 'Bookmarks' } }}>
-                Bookmarks
+              <Link to={{ pathname: '/home/premium', state: { selected: 'Premium' } }}>
+              Premium
               </Link>
 
             </li>

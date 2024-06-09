@@ -5,7 +5,9 @@ import './Css/Home.css';
 import Tweet from './Tweet';
 import Users from './Users';
 import Explore from './Explore';
+import Premium from './Premium';
 import Profile from './Profile';
+import Notifications from './Notifications';
 const Home = () => {
   const location = useLocation();
 
@@ -33,6 +35,10 @@ const Home = () => {
         return <Explore />;
       case '/home/profile':
         return <Profile />;
+      case '/home/premium':
+        return <Premium />;
+      case '/home/notifications':
+        return <Notifications />;
       default:
         return <Tweet />;
     }

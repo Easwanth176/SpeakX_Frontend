@@ -10,6 +10,10 @@ import {
   DELETE_COMMENT 
 } from './Graphql';
 
+import defaultProfileImage from './assets/Sree.png'; 
+import easwanth176 from './assets/easwanth176.jpg'; 
+import Aaradhya143 from './assets/Aaradhya143.jpg'; 
+
 export default function Tweet() {
   const { loading, error, data, refetch } = useQuery(GET_TWEETS);
   const [deleteTweet] = useMutation(DELETE_TWEET, {
@@ -48,6 +52,7 @@ export default function Tweet() {
   const handleCreateTweet = async () => {
     try {
       const token = localStorage.getItem('token');
+      console.log('Token:', token);
       if (!token) {
         throw new Error('User not authenticated');
       }
@@ -115,11 +120,12 @@ export default function Tweet() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  // Render tweets
   return (
     <div className='tweets'>
       <div className="tweet-container">
         <div className="tweet-header">
-          <h3>Home</h3>
+          <h3>Start Tweeting...</h3>
         </div>
         <div className="tweet-body">
           <div className="new-tweet">
@@ -130,48 +136,71 @@ export default function Tweet() {
             />
             <button onClick={handleCreateTweet}>Tweet</button>
           </div>
-          {data.allTweets.map((tweet) => (
-            <div className="tweet" key={tweet.id}>
-              <div className="tweet-header">
-                <img src="https://via.placeholder.com/50" alt="profile" />
-                <h4>{tweet.user.username}</h4>
-              </div>
-              <div className="tweet-content">
-                <p>{tweet.text}</p>
-              </div>
-              <div className="tweet-footer">
-                <button onClick={() => handleLikeTweet(tweet.id)}>Like ({tweet.likes.length})</button>
-                <button onClick={() => setCommentTweetId(tweet.id)}>Comment</button>
-                <button>Retweet</button>
-                {localStorage.getItem('userId') === tweet.user.id && (
-                  <button onClick={() => handleDeleteTweet(tweet.id)}>Delete</button>
-                )}
-              </div>
-              {commentTweetId === tweet.id && (
-                <div className="new-comment">
-                  <textarea
-                    placeholder="Add a comment"
-                    value={newCommentText}
-                    onChange={(e) => setNewCommentText(e.target.value)}
+          {data.allTweets.map((tweet) => {
+            // Choose profile image based on tweet username
+            let profileImage = defaultProfileImage;
+            switch (tweet.user.username) {
+              case 'easwanth176':
+                profileImage = easwanth176;
+                break;
+              case 'Aaradhya143':
+                profileImage = Aaradhya143;
+                break;
+              // Add more cases for other usernames as needed
+              default:
+                profileImage = defaultProfileImage;
+                break;
+            }
+
+            return (
+              <div className="tweet" key={tweet.id}>
+                <div className="tweet-header">
+                  <img
+                    src={profileImage} // Use the selected profile image
+                    alt="profile"
+                    onError={(e) => {
+                      e.target.src = defaultProfileImage; // Use default profile image on error
+                    }}
                   />
-                  <button onClick={() => handleCreateComment(tweet.id)}>Comment</button>
+                  <h4>{tweet.user.username}</h4>
                 </div>
-              )}
-              <div className="comments">
-                {tweet.comments.map((comment) => (
-                  <div className="comment" key={comment.id}>
-                    <div className="comment-header">
-                      <h5>{comment.user.username}</h5>
-                      <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
-                    </div>
-                    <div className="comment-content">
-                      <p>{comment.text}</p>
-                    </div>
+                <div className="tweet-content">
+                  <p>{tweet.text}</p>
+                </div>
+                <div className="tweet-footer">
+                  <button onClick={() => handleLikeTweet(tweet.id)}>Like ({tweet.likes.length})</button>
+                  <button onClick={() => setCommentTweetId(tweet.id)}>Comment</button>
+                  <button>Retweet</button>
+                  {localStorage.getItem('userId') === tweet.user.id && (
+                    <button onClick={() => handleDeleteTweet(tweet.id)}>Delete</button>
+                  )}
+                </div>
+                {commentTweetId === tweet.id && (
+                  <div className="new-comment">
+                    <textarea
+                      placeholder="Add a comment"
+                      value={newCommentText}
+                      onChange={(e) => setNewCommentText(e.target.value)}
+                    />
+                    <button onClick={() => handleCreateComment(tweet.id)}>Comment</button>
                   </div>
-                ))}
+                )}
+                <div className="comments">
+                  {tweet.comments.map((comment) => (
+                    <div className="comment" key={comment.id}>
+                      <div className="comment-header">
+                        <h5>{comment.user.username}</h5>
+                        <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                      </div>
+                      <div className="comment-content">
+                        <p>{comment.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

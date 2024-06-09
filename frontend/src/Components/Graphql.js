@@ -57,19 +57,15 @@ export const LIKE_TWEET = gql`
     }
   }
 `;
-
 export const GET_USER = gql`
-  query {
+  query GetUser {
     user {
+      id
       username
       email
-      joined
       tweets {
         id
         text
-        user {
-          username
-        }
         likes {
           id
         }
@@ -80,9 +76,11 @@ export const GET_USER = gql`
           id
           text
           user {
+            id
             username
           }
         }
+        date
       }
       followers {
         id
@@ -95,7 +93,6 @@ export const GET_USER = gql`
     }
   }
 `;
-
 export const RETWEET = gql`
   mutation Retweet($id: ID!) {
     retweet(id: $id) {
