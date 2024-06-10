@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Twitter Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Explaining The Installation -->
+## Installation
 
-## Available Scripts
+1. Clone the repository:
+    ```bash 
+    git clone <repository_url>
+    ```
 
-In the project directory, you can run:
+2. Navigate to the project directory:
+    ```bash
+    cd <project_directory>
+    ```
 
-### `npm start`
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. Run the app:
+    ```bash
+    npm start
+    ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+5. Open the browser and go to [http://localhost:3000](http://localhost:3000)
 
-### `npm test`
+<!-- Explaining The Usage of this Twitter frontend -->
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is a simple frontend for Twitter. You can post tweets, like tweets, and retweet tweets. You can also see the tweets of the people you follow.
 
-### `npm run build`
+Sample usage with credentials:
+- Username: `user1`
+- Password: `password`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- Screenshots -->
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Home Page
+![Home Page](path_to_screenshot_home_page)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Profile Page
+![Profile Page](path_to_screenshot_profile_page)
 
-### `npm run eject`
+### Explore Page
+![Explore Page](path_to_screenshot_explore_page)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Premium Page
+![Premium Page](path_to_screenshot_premium_page)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Explaining the Features -->
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Post tweets**: Share your thoughts with the world.
+- **Like tweets**: Show appreciation for tweets you enjoy.
+- **Retweet tweets**: Share tweets with your followers.
+- **Follow users**: Keep up with your favorite people.
+- **See tweets of the people you follow**: Stay updated with your network.
+- **See your tweets**: View your own tweet history.
+- **See your followers**: Check who is following you.
+- **See who you are following**: Keep track of people you follow.
+- **See the tweets of a user**: View tweets from specific users.
+- **See the followers of a user**: See who follows a particular user.
+- **See who a user is following**: Check the following list of a user.
+- **See the tweets you liked**: View your liked tweets.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Additional Information -->
+## Additional Information
 
-## Learn More
+This project is a part of learning and implementing frontend technologies with React and Apollo Client. It uses a GraphQL API for fetching data and managing state.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Technologies Used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- Apollo Client
+- GraphQL
+- CSS
 
-### Code Splitting
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
