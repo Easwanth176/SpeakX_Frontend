@@ -1,15 +1,14 @@
 # Twitter Frontend
-## SpeakX Deployed Link
-```bash
-https://speakx.onrender.com/
-```
-## Usage
+## SpeakX Deployed Link And Usage
 
 This is a simple frontend for Twitter. You can post tweets, like tweets, and retweet tweets. You can also see the tweets of the people you follow.
 
 Sample usage with credentials:
 - Username: `speakx@gmail.com`
 - Password: `speakx@123`
+```bash
+https://speakx.onrender.com/
+```
 
 ## Installation
 
