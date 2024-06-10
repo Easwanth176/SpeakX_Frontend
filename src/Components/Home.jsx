@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import './Css/Home.css';
 import Tweet from './Tweet';
@@ -8,22 +8,24 @@ import Explore from './Explore';
 import Premium from './Premium';
 import Profile from './Profile';
 import Notifications from './Notifications';
+
 const Home = () => {
+  const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/login';
+    navigate('/login');
   };
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       // Redirect to login if token does not exist
-      window.location.href = '/login';
+      navigate('/login');
     }
-  }, []);
-    console.log(localStorage.getItem('token'));
+  }, [navigate]);
+
   const Component = () => {
     const { pathname, state } = location;
     const selected = state?.selected;
@@ -50,10 +52,8 @@ const Home = () => {
         <Sidebar />
         <button onClick={handleLogout}>Logout</button>
       </div>
-   
-        {Component()}
-        <Users />
-      
+      {Component()}
+      <Users />
     </div>
   );
 };
