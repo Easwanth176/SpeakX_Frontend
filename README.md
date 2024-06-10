@@ -4,7 +4,7 @@
 
 1. Clone the repository:
     ```bash 
-    git clone <repository_url>
+    git clone <repository_url>](https://github.com/Easwanth176/SpeakX_Frontend.git
     ```
 
 2. Install the dependencies:
