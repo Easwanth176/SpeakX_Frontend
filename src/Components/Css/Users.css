@@ -83,8 +83,8 @@
 }
 
 .user-card button {
-  width: 25%;
-  height: auto;
+  width: 30%;
+  height: 30px;
   font-size: 1rem;
   color: #fff;
   background-color: #1da1f2;
@@ -92,8 +92,9 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: auto;
-  margin-bottom: auto;
+  margin-left:  auto;
+  margin-top: 20px;
+  padding: 5px 0;
 }
 
 .user-card button:hover {

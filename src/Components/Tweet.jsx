@@ -10,9 +10,14 @@ import {
   DELETE_COMMENT 
 } from './Graphql';
 
-import defaultProfileImage from './assets/Default.png'; 
-import easwanth176 from './assets/easwanth176.jpg'; 
-import Aaradhya143 from './assets/Aaradhya143.jpg'; 
+import defaultProfileImage from './assets/Default.png';
+import easwanth176 from './assets/easwanth176.jpg';
+import Aaradhya143 from './assets/Aaradhya143.jpg';
+import pavan49 from './assets/Pavan.png';
+import kiran078 from './assets/Kiran.png';
+import sree026 from './assets/Sree.png';
+import sasank1221 from './assets/Sasank.gif';
+import abhi3442 from './assets/Abhi.png';
 
 export default function Tweet() {
   const { loading, error, data, refetch } = useQuery(GET_TWEETS);
@@ -145,7 +150,21 @@ export default function Tweet() {
             case 'Aaradhya143':
               profileImage = Aaradhya143;
               break;
-            // Add more cases for other usernames as needed
+            case 'pavan49':
+              profileImage = pavan49;
+              break;
+            case 'kiran078':
+              profileImage = kiran078;
+              break;
+            case 'sree026':
+              profileImage = sree026;
+              break;
+            case 'sasank1221':
+              profileImage = sasank1221;
+              break;
+            case 'abhi3442':
+              profileImage = abhi3442;
+              break;
             default:
               profileImage = defaultProfileImage;
               break;

@@ -10,8 +10,11 @@ import kiran078 from './assets/Kiran.png';
 import sree026 from './assets/Sree.png';
 import sasank1221 from './assets/Sasank.gif';
 import abhi3442 from './assets/Abhi.png';
+import coverImage from './assets/cover.jpeg'; // Update with your actual cover image path
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers, faUserFriends, faHeart, faRetweet, faComment } from '@fortawesome/free-solid-svg-icons';
 
-const Profile = () => {
+const ProfilePage = () => {
   const { loading: userLoading, error: userError, data: userData } = useQuery(GET_USER);
   const { loading: tweetsLoading, error: tweetsError, data: tweetsData } = useQuery(GET_TWEETS);
 
@@ -33,9 +36,8 @@ const Profile = () => {
     return <p>No user data found.</p>;
   }
 
-  const { id: userId, username, email, joined, followers, following } = userData.user;
+  const { id: userId, username, followers, following } = userData.user;
 
-  // Filter tweets that were posted by the current user
   const userTweets = tweetsData.allTweets.filter(tweet => tweet.user.id === userId);
 
   const getProfileImage = (username) => {
@@ -60,62 +62,67 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <h1>Profile</h1>
-      <div className="profile-header">
+    <div className="profile-page-container">
+      <div className="profile-page-header">
+        <div className="profile-page-cover-image" style={{ backgroundImage: `url(${coverImage})` }}></div>
         <img
           src={getProfileImage(username)}
           alt="profile"
-          className="profile-image"
+          className="profile-page-image"
           onError={(e) => {
             e.target.src = defaultProfileImage;
           }}
         />
-        <div className="profile-details">
-          <p>Username: <span>{username}</span></p>
-          <p>Email: <span>{email}</span></p>
-          <p>Joined: <span>{joined}</span></p>
-          <p>Followers: <span>{followers.length}</span></p>
-          <p>Following: <span>{following.length}</span></p>
+        <div className="profile-page-details">
+          <h1>{username}</h1>
+          <p>@{username}</p>
+        </div>
+        <div className="profile-page-stats">
+          <div>
+            <FontAwesomeIcon icon={faUsers} style={{ marginRight: '5px' }} />
+            <span>{followers.length}</span> Followers
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faUserFriends} style={{ marginRight: '5px' }} />
+            <span>{following.length}</span> Following
+          </div>
         </div>
       </div>
-      <h2>Tweets Posted:</h2>
-      <div className="tweets-list">
+      <div className="profile-page-tweets-list">
         {userTweets.map(tweet => (
-          <div key={tweet.id} className="tweet">
+          <div key={tweet.id} className="profile-page-tweet">
             <img
               src={getProfileImage(tweet.user.username)}
               alt="tweet profile"
-              className="tweet-profile-image"
+              className="profile-page-tweet-profile-image"
               onError={(e) => {
                 e.target.src = defaultProfileImage;
               }}
             />
-            <div className="tweet-content">
+            <div className="profile-page-tweet-content">
               <p>{tweet.text}</p>
               <p>By: {tweet.user.username}</p>
-              <p>Likes: {tweet.likes ? tweet.likes.length : 0}</p>
-              <p>Retweets: {tweet.retweets ? tweet.retweets.length : 0}</p>
-              <p>Comments:</p>
-              <ul>
-                {tweet.comments ? (
-                  tweet.comments.map(comment => (
-                    <li key={comment.id}>
-                      <p>{comment.text}</p>
-                      <p>By: {comment.user.username}</p>
-                    </li>
-                  ))
-                ) : (
-                  <li>No comments yet.</li>
-                )}
-              </ul>
+              <div className="profile-page-tweet-icons">
+                <div>
+                  <FontAwesomeIcon icon={faHeart} style={{ marginRight: '5px' }} />
+                  {tweet.likes ? tweet.likes.length : 0}
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faRetweet} style={{ marginRight: '5px' }} />
+                 <p>{tweet.retweets ? tweet.retweets.length : 0}</p> 
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faComment} style={{ marginRight: '5px' }} />
+                  {tweet.comments ? tweet.comments.length : 0}
+                </div>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      <button>Logout</button>
     </div>
   );
 }
 
-export default Profile;
+export default ProfilePage;
+
