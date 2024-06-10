@@ -1,6 +1,5 @@
 # Twitter Frontend
 
-<!-- Explaining The Installation -->
 ## Installation
 
 1. Clone the repository:
@@ -8,46 +7,43 @@
     git clone <repository_url>
     ```
 
-2. Navigate to the project directory:
-    ```bash
-    cd <project_directory>
-    ```
-
-3. Install the dependencies:
+2. Install the dependencies:
     ```bash
     npm install
     ```
 
-4. Run the app:
+3. Run the app:
     ```bash
     npm start
     ```
 
-5. Open the browser and go to [http://localhost:3000](http://localhost:3000)
+4. Open the browser and go to [http://localhost:3000](http://localhost:3000)
 
-<!-- Explaining The Usage of this Twitter frontend -->
 ## Usage
 
 This is a simple frontend for Twitter. You can post tweets, like tweets, and retweet tweets. You can also see the tweets of the people you follow.
 
 Sample usage with credentials:
-- Username: `user1`
-- Password: `password`
+- Username: `speakx@gmail.com`
+- Password: `speakx@123`
 
 <!-- Screenshots -->
 ## Screenshots
 
 ### Home Page
-![Home Page](path_to_screenshot_home_page)
+![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/060c425f-b14a-42c2-a302-bd425ede0e25)
+
 
 ### Profile Page
-![Profile Page](path_to_screenshot_profile_page)
+![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/e71d7f2e-f59e-4552-b389-7c5aea4856cd)
+
 
 ### Explore Page
-![Explore Page](path_to_screenshot_explore_page)
+![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/a2b7449d-2b2c-4fe8-a514-c1a3167d6abc)
 
 ### Premium Page
-![Premium Page](path_to_screenshot_premium_page)
+![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/a5c85ca3-eab5-4183-ab8d-ed5874a12943)
+
 
 <!-- Explaining the Features -->
 ## Features
@@ -65,10 +61,6 @@ Sample usage with credentials:
 - **See who a user is following**: Check the following list of a user.
 - **See the tweets you liked**: View your liked tweets.
 
-<!-- Additional Information -->
-## Additional Information
-
-This project is a part of learning and implementing frontend technologies with React and Apollo Client. It uses a GraphQL API for fetching data and managing state.
 
 ### Technologies Used
 
@@ -76,11 +68,3 @@ This project is a part of learning and implementing frontend technologies with R
 - Apollo Client
 - GraphQL
 - CSS
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
