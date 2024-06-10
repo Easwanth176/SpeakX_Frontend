@@ -39,7 +39,8 @@ https://speakx.onrender.com/
 
 
 ### Profile Page
-![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/e71d7f2e-f59e-4552-b389-7c5aea4856cd)
+![image](https://github.com/Easwanth176/SpeakX_Frontend/assets/103351652/bc115218-d4d0-48e6-ab96-49f287d30955)
+
 
 
 ### Explore Page
