@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './Css/Users.css';
 import { gql, useQuery, useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import defaultProfileImage from './assets/Default.png'; 
+import easwanth176 from './assets/easwanth176.jpg'; 
+import Aaradhya143 from './assets/Aaradhya143.jpg';
 
 const GET_USERS = gql`
   query GetUsers {
@@ -135,48 +139,62 @@ export default function Users() {
         onChange={handleSearch}
       />
       <div className="users-list">
-        {filteredUsers.map(user => (
-          <div key={user.id} className="user-card">
-            <h3>{user.username}</h3>
-            <p>{user.email}</p>
-            <p>Followers: {user.followers.length}</p>
-            {localStorage.getItem('userId') !== user.id && (
-              <>
-                {isFollowing(user) ? (
-                  <button onClick={() => handleUnfollowUser(user.id)}>Unfollow</button>
-                ) : (
-                  <button onClick={() => handleFollowUser(user.id)}>Follow</button>
-                )}
-              </>
-            )}
-          </div>
-        ))}
+        {filteredUsers.map(user => {
+          let profileImage;
+          switch (user.username) {
+            case 'easwanth176':
+              profileImage = easwanth176;
+              break;
+            case 'Aaradhya143':
+              profileImage = Aaradhya143;
+              break;
+            // Add more cases for other usernames as needed
+            default:
+              profileImage = defaultProfileImage;
+              break;
+          }
+
+          return (
+            <div key={user.id} className="user-card">
+              <img
+                src={profileImage} // Use the selected profile image
+                alt="profile"
+                onError={(e) => {
+                  e.target.src = defaultProfileImage; // Use default profile image on error
+                }}
+              />
+              <h3>{user.username}</h3>
+              <p>{user.email}</p>
+              <p>Followers: {user.followers.length}</p>
+              {localStorage.getItem('userId') !== user.id && (
+                <>
+                  {isFollowing(user) ? (
+                    <button onClick={() => handleUnfollowUser(user.id)}>Unfollow</button>
+                  ) : (
+                    <button onClick={() => handleFollowUser(user.id)}>Follow</button>
+                  )}
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <div className="premium">
         <h3>Subscribe to Premium</h3>
         <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
-        <button>subscribe</button>
+        <button> <Link to={{ pathname: '/home/premium', state: { selected: 'Premium' } }}>
+                Subscribe
+              </Link></button>
       </div>
 
-        <div className="hapening">
-          
-Whats happening
-India vs Pakistan
-Cricket
-·
-LIVE
-Sports · Trending
-#INDvsPAK
-Trending with Bumrah, Pakistan
-Sports · Trending
-#Panauti
-15K posts
-Politics · Trending
-Accident
-51.6K posts
-        </div>
-
+      <div className="happening">
+        <h3>What's happening</h3>
+        <p>India vs Pakistan Cricket · LIVE</p>
+        <p>Sports · Trending · #INDvsPAK · Trending with Bumrah, Pakistan</p>
+        <p>Sports · Trending · #Panauti · 15K posts</p>
+        <p>Politics · Trending · Accident · 51.6K posts</p>
+      </div>
     </div>
   );
 }

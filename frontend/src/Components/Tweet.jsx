@@ -10,7 +10,7 @@ import {
   DELETE_COMMENT 
 } from './Graphql';
 
-import defaultProfileImage from './assets/Sree.png'; 
+import defaultProfileImage from './assets/Default.png'; 
 import easwanth176 from './assets/easwanth176.jpg'; 
 import Aaradhya143 from './assets/Aaradhya143.jpg'; 
 
