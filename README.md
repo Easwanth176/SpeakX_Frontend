@@ -1,4 +1,8 @@
 # Twitter Frontend
+## SpeakX Deployed Link
+```bash
+https://speakx.onrender.com/
+```
 
 ## Installation
 
