@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import './Css/Login.css';
 import logo from './assets/logo.png';
@@ -18,6 +18,7 @@ const LOGIN_USER = gql`
 `;
 
 const Login = () => {
+  const navigate = useNavigate(); // Hook for navigation
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -27,13 +28,12 @@ const Login = () => {
     onCompleted: data => {
       const token = data.login.token;
       localStorage.setItem('token', token);
-      window.location.href = '/home';
+      navigate('/home');
     },
     onError: error => {
       console.error('Error logging in:', error.message);
     }
   });
-  
 
   const handleChange = e => {
     setFormData({

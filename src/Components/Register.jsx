@@ -15,7 +15,7 @@ const REGISTER_USER = gql`
 `;
 
 const Register = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     username: '',
     email: '',
