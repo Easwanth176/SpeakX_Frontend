@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import './Css/Login.css';
 import logo from './assets/logo.png';
@@ -15,33 +15,34 @@ const REGISTER_USER = gql`
 `;
 
 const Register = () => {
-
+  const navigate = useNavigate(); // Hook for navigation
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: ''
   });
 
-  const [registerUser, { loading, error }] = useMutation(REGISTER_USER, {
-    onCompleted: data => {
-      console.log(data);
-      alert('Registration successful! Please log in.');
-      window.location.href = '/login';
-    }
-  });
+  const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
   const handleChange = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
-  }
+  };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    registerUser({ variables: formData });
-
-  }
+    try {
+      const { data } = await registerUser({ variables: formData });
+      if (data && data.register) {
+        alert('Registration successful! Please log in.');
+        navigate('/login'); // Navigate to login page
+      }
+    } catch (err) {
+      console.error('Registration error:', err);
+    }
+  };
 
   return (
     <div className="container">
