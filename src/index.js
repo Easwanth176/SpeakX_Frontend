@@ -7,6 +7,10 @@ import './index.css';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Home from './Components/Home';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas); // Add all icons from the Free Solid icon pack
 
 const root = createRoot(document.getElementById('root'));
 

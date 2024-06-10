@@ -7,11 +7,24 @@ export default function Explore() {
   const trendingHashtags = [
     { hashtag: '#INDvsPAK', description: 'India vs Pakistan Cricket Match', posts: '150K posts' },
     { hashtag: '#Bumrah', description: 'Trending with #INDvsPAK', posts: '80K posts' },
+    { hashtag: '#Dhoni', description: 'Trending with #INDvsPAK', posts: '100K posts' },
+    { hashtag: '#Palestine', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Election', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Israel', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#RahulGandhi', description: 'Politics · Trending', posts: '51.6K posts' },
     { hashtag: '#Panauti', description: 'Sports · Trending', posts: '15K posts' },
     { hashtag: '#Accident', description: 'Politics · Trending', posts: '51.6K posts' },
     { hashtag: '#Coding', description: 'Learn to code in 2024', posts: '100K posts' },
     { hashtag: '#ReactJS', description: 'Building with React', posts: '90K posts' },
-    // Add more hashtags and descriptions as needed
+    { hashtag: '#JavaScript', description: 'JavaScript is the best', posts: '200K posts' },
+    { hashtag: '#Python', description: 'Python is the best', posts: '150K posts' },
+    { hashtag: '#Modi', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Kejriwal', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Yogi', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Gaza', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Hamas', description: 'Politics · Trending', posts: '51.6K posts' },
+    { hashtag: '#Jerusalem', description: 'Politics · Trending', posts: '51.6K posts' },
+
   ];
 
   const handleSearch = (event) => {

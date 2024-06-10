@@ -123,85 +123,89 @@ export default function Tweet() {
   // Render tweets
   return (
     <div className='tweets'>
+      <div className="fixed-header">
+        <h3>Start Tweeting...</h3>
+        <div className="new-tweet">
+          <textarea
+            placeholder="What's happening?"
+            value={newTweetText}
+            onChange={(e) => setNewTweetText(e.target.value)}
+          />
+          <button onClick={handleCreateTweet}>Tweet</button>
+        </div>
+      </div>
       <div className="tweet-container">
-        <div className="tweet-header">
-          <h3>Start Tweeting...</h3>
-        </div>
-        <div className="tweet-body">
-          <div className="new-tweet">
-            <textarea
-              placeholder="What's happening?"
-              value={newTweetText}
-              onChange={(e) => setNewTweetText(e.target.value)}
-            />
-            <button onClick={handleCreateTweet}>Tweet</button>
-          </div>
-          {data.allTweets.map((tweet) => {
-            // Choose profile image based on tweet username
-            let profileImage = defaultProfileImage;
-            switch (tweet.user.username) {
-              case 'easwanth176':
-                profileImage = easwanth176;
-                break;
-              case 'Aaradhya143':
-                profileImage = Aaradhya143;
-                break;
-              // Add more cases for other usernames as needed
-              default:
-                profileImage = defaultProfileImage;
-                break;
-            }
+        {data.allTweets.map((tweet) => {
+          // Choose profile image based on tweet username
+          let profileImage = defaultProfileImage;
+          switch (tweet.user.username) {
+            case 'easwanth176':
+              profileImage = easwanth176;
+              break;
+            case 'Aaradhya143':
+              profileImage = Aaradhya143;
+              break;
+            // Add more cases for other usernames as needed
+            default:
+              profileImage = defaultProfileImage;
+              break;
+          }
 
-            return (
-              <div className="tweet" key={tweet.id}>
-                <div className="tweet-header">
-                  <img
-                    src={profileImage} // Use the selected profile image
-                    alt="profile"
-                    onError={(e) => {
-                      e.target.src = defaultProfileImage; // Use default profile image on error
-                    }}
-                  />
-                  <h4>{tweet.user.username}</h4>
-                </div>
-                <div className="tweet-content">
-                  <p>{tweet.text}</p>
-                </div>
-                <div className="tweet-footer">
-                  <button onClick={() => handleLikeTweet(tweet.id)}>Like ({tweet.likes.length})</button>
-                  <button onClick={() => setCommentTweetId(tweet.id)}>Comment</button>
-                  <button>Retweet</button>
-                  {localStorage.getItem('userId') === tweet.user.id && (
-                    <button onClick={() => handleDeleteTweet(tweet.id)}>Delete</button>
-                  )}
-                </div>
-                {commentTweetId === tweet.id && (
-                  <div className="new-comment">
-                    <textarea
-                      placeholder="Add a comment"
-                      value={newCommentText}
-                      onChange={(e) => setNewCommentText(e.target.value)}
-                    />
-                    <button onClick={() => handleCreateComment(tweet.id)}>Comment</button>
-                  </div>
-                )}
-                <div className="comments">
-                  {tweet.comments.map((comment) => (
-                    <div className="comment" key={comment.id}>
-                      <div className="comment-header">
-                        <h5>{comment.user.username}</h5>
-                        <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
-                      </div>
-                      <div className="comment-content">
-                        <p>{comment.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+          return (
+            <div className="tweet" key={tweet.id}>
+              <div className="tweet-header">
+                <img
+                  src={profileImage} // Use the selected profile image
+                  alt="profile"
+                  onError={(e) => {
+                    e.target.src = defaultProfileImage; // Use default profile image on error
+                  }}
+                />
+                <h4>{tweet.user.username}</h4>
               </div>
-            );
-          })}
-        </div>
+              <div className="tweet-content">
+                <p>{tweet.text}</p>
+              </div>
+              <div className="tweet-footer">
+                <button className="like" onClick={() => handleLikeTweet(tweet.id)}>
+                  <span className="icon"></span>Like ({tweet.likes.length})
+                </button>
+                <button className="comment" onClick={() => setCommentTweetId(tweet.id)}>
+                  <span className="icon"></span>Comment
+                </button>
+                <button className="retweet">
+                  <span className="icon"></span>Retweet
+                </button>
+                {localStorage.getItem('userId') === tweet.user.id && (
+                  <button onClick={() => handleDeleteTweet(tweet.id)}>Delete</button>
+                )}
+              </div>
+              {commentTweetId === tweet.id && (
+                <div className="new-comment">
+                  <textarea
+                    placeholder="Add a comment"
+                    value={newCommentText}
+                    onChange={(e) => setNewCommentText(e.target.value)}
+                  />
+                  <button onClick={() => handleCreateComment(tweet.id)}>Comment</button>
+                </div>
+              )}
+              <div className="comments">
+                {tweet.comments.map((comment) => (
+                  <div className="comment" key={comment.id}>
+                    <div className="comment-header">
+                      <h5>{comment.user.username}</h5>
+                      <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                    </div>
+                    <div className="comment-content">
+                      <p>{comment.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

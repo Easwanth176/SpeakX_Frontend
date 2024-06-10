@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import './Css/Users.css';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import defaultProfileImage from './assets/Default.png'; 
-import easwanth176 from './assets/easwanth176.jpg'; 
+import defaultProfileImage from './assets/Default.png';
+import easwanth176 from './assets/easwanth176.jpg';
 import Aaradhya143 from './assets/Aaradhya143.jpg';
-
+import pavan49 from './assets/Pavan.png';
+import kiran078 from './assets/Kiran.png';
+import sree026 from './assets/Sree.png';
+import sasank1221 from './assets/Sasank.gif';
+import abhi3442 from './assets/Abhi.png';
 const GET_USERS = gql`
   query GetUsers {
     allUsers {
@@ -131,13 +135,29 @@ export default function Users() {
 
   return (
     <div className="users-container">
-      <h1>Users</h1>
+         <div className="premium">
+        <h3>Subscribe to Premium</h3>
+        <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
+        <button>
+          <Link to={{ pathname: '/home/premium', state: { selected: 'Premium' } }}>
+            Subscribe
+          </Link>
+        </button>
+      </div>
+
+      <div className="together">
+      <h3>Twitter Users</h3>
+
       <input
         type="text"
         placeholder="Search Users"
         value={searchTerm}
         onChange={handleSearch}
+        style={{ marginBottom: '1rem' }}
       />
+
+
+
       <div className="users-list">
         {filteredUsers.map(user => {
           let profileImage;
@@ -148,7 +168,21 @@ export default function Users() {
             case 'Aaradhya143':
               profileImage = Aaradhya143;
               break;
-            // Add more cases for other usernames as needed
+            case 'pavan49':
+              profileImage = pavan49;
+              break;
+            case 'kiran078':
+              profileImage = kiran078;
+              break;
+            case 'sree026':
+              profileImage = sree026;
+              break;
+            case 'sasank1221':
+              profileImage = sasank1221;
+              break;
+            case 'abhi3442':
+              profileImage = abhi3442;
+              break;
             default:
               profileImage = defaultProfileImage;
               break;
@@ -156,6 +190,7 @@ export default function Users() {
 
           return (
             <div key={user.id} className="user-card">
+              <div className="user-card-img">
               <img
                 src={profileImage} // Use the selected profile image
                 alt="profile"
@@ -163,10 +198,13 @@ export default function Users() {
                   e.target.src = defaultProfileImage; // Use default profile image on error
                 }}
               />
-              <h3>{user.username}</h3>
-              <p>{user.email}</p>
+              </div>
+                <div className="user-content">
+                <h3>{user.username}</h3>
               <p>Followers: {user.followers.length}</p>
-              {localStorage.getItem('userId') !== user.id && (
+           
+                </div>
+                {localStorage.getItem('userId') !== user.id && (
                 <>
                   {isFollowing(user) ? (
                     <button onClick={() => handleUnfollowUser(user.id)}>Unfollow</button>
@@ -180,21 +218,13 @@ export default function Users() {
         })}
       </div>
 
-      <div className="premium">
-        <h3>Subscribe to Premium</h3>
-        <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
-        <button> <Link to={{ pathname: '/home/premium', state: { selected: 'Premium' } }}>
-                Subscribe
-              </Link></button>
-      </div>
 
-      <div className="happening">
-        <h3>What's happening</h3>
-        <p>India vs Pakistan Cricket · LIVE</p>
-        <p>Sports · Trending · #INDvsPAK · Trending with Bumrah, Pakistan</p>
-        <p>Sports · Trending · #Panauti · 15K posts</p>
-        <p>Politics · Trending · Accident · 51.6K posts</p>
+
+
+
       </div>
+   
+    
     </div>
   );
 }

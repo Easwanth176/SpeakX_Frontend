@@ -3,7 +3,7 @@
     width: 17%;
     height: 100vh;
     border: 1px solid black;
-    background-color: #f2f2f2;
+    background-color: #f5f8fa;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,4 +12,10 @@
 .home-container
 {
 display: flex;
+}
+.leftiii
+{
+    width: 90%;
+    height: auto;
+    border-radius: 5px;  
 }
